@@ -1,4 +1,4 @@
-import type { Color, Palette } from 'types/colors';
+import type { ColorsSet } from 'types/colors';
 
 // to use the color variables in css use the prefix `--color` (i.e. `--color-primary`)
 // the colors are based on the theme selected through the ThemeContext
@@ -6,7 +6,7 @@ import type { Color, Palette } from 'types/colors';
 // https://coolors.co/
 // https://mycolor.space/?hex=%23BF538D&sub=1
 
-export const PALETTE: Record<Palette, Color> = {
+export const PALETTE: ColorsSet = {
   'primary-dark': {
     // light: '#00243e',
     light: '#8F71A0',
@@ -37,7 +37,7 @@ export const PALETTE: Record<Palette, Color> = {
   },
 };
 
-export const COLORS: Record<string, Color> = {
+export const COLORS: ColorsSet = {
   text: {
     light: PALETTE['gray-dark'].light,
     dark: PALETTE['gray-light'].light,

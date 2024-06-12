@@ -9,11 +9,47 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'eslint-config-prettier',
     'prettier',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'import'],
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    // import config
+    'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never', js: 'never' }],
+    'import/prefer-default-export': 'off',
+    'import/no-duplicates': 'error',
+    'import/no-useless-path-segments': ['error', { noUselessIndex: true }],
+    'import/no-cycle': [2, { maxDepth: 1 }],
+    'import/prefer-default-export': 'off',
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', ['internal', 'parent', 'sibling', 'index']],
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'builtin',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['react'],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
+  },
+  settings: {
+    'import/resolver': {
+      node: { extensions: ['.js', '.jsx', '.ts', '.tsx'], moduleDirectory: ['node_modules', 'src'] },
+    },
+    react: {
+      version: 'detect',
+    },
   },
 };

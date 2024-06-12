@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-
 import { AnimatePresence, motion } from 'framer-motion';
 import { observer } from 'mobx-react-lite';
-import styled from 'styled-components';
-
+import { styled } from 'styled-components';
 import { ZINDEX } from 'constants/css-variables';
-import { useRootStore } from 'providers/RootStoreProvider';
+import { useRootStore } from 'contexts/rootContext';
 import { Message, MessageType } from 'types/message';
 
 export const Notificator = observer(function Notificator() {

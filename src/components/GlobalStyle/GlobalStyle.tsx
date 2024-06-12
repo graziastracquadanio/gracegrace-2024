@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-
 import ResetStyle from './ResetStyle';
 import TypographyStyle from './TypographyStyle';
 import { FONTS, LAYOUT, THEME } from 'constants/css-variables';

@@ -1,12 +1,11 @@
 import { useMemo } from 'react';
-
 import { observer } from 'mobx-react-lite';
-import styled from 'styled-components';
-
+import { styled } from 'styled-components';
 import { Section } from './Section';
 import { BREAKPOINTS, COLORS, PALETTE } from 'constants/css-variables';
-import { useRootStore } from 'providers/RootStoreProvider';
-import { useThemeContext } from 'providers/ThemeProvider';
+import { useRootStore } from 'contexts/rootContext';
+import { useThemeContext } from 'contexts/themeContext';
+import { ColorsSet } from 'types/colors';
 import { copyToClipboard } from 'utils';
 
 export const ColorsSection = observer(function ColorsSection() {
@@ -15,8 +14,8 @@ export const ColorsSection = observer(function ColorsSection() {
     uiStore: { addNotification },
   } = useRootStore();
 
-  const colors = useMemo(
-    () => (colorSet: any) => {
+  const getColors = useMemo(
+    () => (colorSet: ColorsSet) => {
       const onCopy = (value: string) => {
         addNotification(`${value} copied to clipboard`);
       };
@@ -45,11 +44,11 @@ export const ColorsSection = observer(function ColorsSection() {
           Where possible avoid using directly the palette. Prefer the use cases or adjust the color using the theme
           context.
         </p>
-        <ColorsList>{colors(PALETTE)}</ColorsList>
+        <ColorsList>{getColors(PALETTE)}</ColorsList>
       </Subsection>
       <Subsection>
         <h5>Uses</h5>
-        <ColorsList>{colors(COLORS)}</ColorsList>
+        <ColorsList>{getColors(COLORS)}</ColorsList>
       </Subsection>
     </Section>
   );

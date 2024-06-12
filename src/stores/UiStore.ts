@@ -1,5 +1,4 @@
 import { makeAutoObservable, runInAction } from 'mobx';
-
 import type { Message, MessageType } from 'types/message';
 
 export class UiStore {

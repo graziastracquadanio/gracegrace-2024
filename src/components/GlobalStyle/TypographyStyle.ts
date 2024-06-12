@@ -1,5 +1,4 @@
 import { css } from 'styled-components';
-
 import { LinkStyle } from './LinkStyle';
 import { BREAKPOINTS, HEADINGS } from 'constants/css-variables';
 

@@ -1,5 +1,5 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 const AboutPage = lazy(() => import('pages/AboutPage'));
 const DocPage = lazy(() => import('pages/DocPage'));

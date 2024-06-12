@@ -1,9 +1,7 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-
+import { useEffect, useMemo, useState } from 'react';
+import { ThemeProvider as StyledThemeProvider, ThemeContext } from 'styled-components';
 import { COLOR_MODE_KEY, COLORS_ALL } from 'constants/colors';
-import type { ColorMode, Color } from 'types/colors';
+import type { ColorMode } from 'types/colors';
 
 const updateRootColors = (newValue: ColorMode) => {
   const root = window.document.documentElement;
@@ -16,16 +14,8 @@ const updateRootColors = (newValue: ColorMode) => {
     }
   });
 };
-export interface ThemeProps {
-  colorMode: ColorMode;
-  setColorMode: (newValue: keyof Color) => void;
-}
 
-export const ThemeContext = createContext({} as ThemeProps);
-
-export const useThemeContext = () => useContext(ThemeContext);
-
-export const ThemeProvider = ({ children }: React.PropsWithChildren<{}>) => {
+export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
   const [colorMode, rawSetColorMode] = useState<ColorMode>('light');
 
   useEffect(() => {
@@ -61,9 +51,7 @@ export const ThemeProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   return (
     <ThemeContext.Provider value={contextValue}>
-      <StyledThemeProvider theme={{ colorMode }}>
-        {children}
-      </StyledThemeProvider>
+      <StyledThemeProvider theme={{ colorMode }}>{children}</StyledThemeProvider>
     </ThemeContext.Provider>
   );
 };

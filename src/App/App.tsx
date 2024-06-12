@@ -1,8 +1,8 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import { GlobalStyle } from 'components/GlobalStyle';
-import { ThemeProvider } from 'providers/ThemeProvider';
-import { RootStoreProvider } from 'providers/RootStoreProvider';
 import { AppContent } from './AppContent';
+import { GlobalStyle } from 'components/GlobalStyle';
+import { RootStoreProvider } from 'providers/RootStoreProvider';
+import { ThemeProvider } from 'providers/ThemeProvider';
 
 export function App() {
   return (

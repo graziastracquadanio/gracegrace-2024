@@ -1,6 +1,7 @@
-import { Notificator } from 'components/Notificator';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
+
 import { AppRouter } from './AppRouter';
+import { Notificator } from 'components/Notificator';
 
 export function AppContent() {
   return (
