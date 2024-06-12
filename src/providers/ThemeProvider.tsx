@@ -1,11 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  PropsWithChildren,
-} from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
@@ -32,7 +25,7 @@ export const ThemeContext = createContext({} as ThemeProps);
 
 export const useThemeContext = () => useContext(ThemeContext);
 
-export const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
+export const ThemeProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [colorMode, rawSetColorMode] = useState<ColorMode>('light');
 
   useEffect(() => {
