@@ -1,21 +1,25 @@
 import { Suspense } from 'react';
 import { styled } from 'styled-components';
 import { AppRouter } from './AppRouter';
+import { LoadingIndicator } from 'components/LoadingIndicator';
 import { Navigation } from 'components/Navigation';
 import { Notificator } from 'components/Notificator';
 import { BREAKPOINTS } from 'constants/css-variables';
 
 export function AppContent() {
   return (
-    <MainContainer>
-      <ContentLimiterContainer>
-        <Notificator />
-        <Navigation />
-        <Suspense>
-          <AppRouter />
-        </Suspense>
-      </ContentLimiterContainer>
-    </MainContainer>
+    <>
+      <LoadingIndicator />
+      <MainContainer>
+        <ContentLimiterContainer>
+          <Notificator />
+          <Navigation />
+          <Suspense>
+            <AppRouter />
+          </Suspense>
+        </ContentLimiterContainer>
+      </MainContainer>
+    </>
   );
 }
 
