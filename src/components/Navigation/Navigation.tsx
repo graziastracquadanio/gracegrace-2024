@@ -18,9 +18,7 @@ export function Navigation() {
       >
         <NavigationSection>
           <NavigationItemLink to="/about">About</NavigationItemLink>
-          <NavigationItemLink to="/recipes">Recipes</NavigationItemLink>
           <NavigationItemLink to="/styleguide">Styleguide</NavigationItemLink>
-          <NavigationItemLink to="/contact">Contact</NavigationItemLink>
         </NavigationSection>
 
         <NavigationSection wrap="no-wrap">
