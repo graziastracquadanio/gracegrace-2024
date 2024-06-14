@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
-import { ThemeProvider as StyledThemeProvider, ThemeContext } from 'styled-components';
+import { useState, useEffect } from 'react';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { COLOR_MODE_KEY, COLORS_ALL } from 'constants/colors';
+import { ThemeContext } from 'contexts/themeContext';
 import type { ColorMode } from 'types/colors';
 
 const updateRootColors = (newValue: ColorMode) => {
@@ -16,7 +17,7 @@ const updateRootColors = (newValue: ColorMode) => {
 };
 
 export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
-  const [colorMode, rawSetColorMode] = useState<ColorMode>('light');
+  const [colorMode, setColorMode] = useState<ColorMode>('light');
 
   useEffect(() => {
     const mql = window.matchMedia('(prefers-color-scheme: dark)');
@@ -31,26 +32,18 @@ export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
     }
 
     if (initialColorValue) {
-      rawSetColorMode(initialColorValue);
+      setColorMode(initialColorValue);
       updateRootColors(initialColorValue);
     }
   }, []);
 
-  const contextValue = useMemo(() => {
-    function setColorMode(newValue: ColorMode) {
-      localStorage.setItem(COLOR_MODE_KEY, newValue);
-      updateRootColors(newValue);
-      rawSetColorMode(newValue);
-    }
-
-    return {
-      colorMode,
-      setColorMode,
-    };
-  }, [colorMode, rawSetColorMode]);
+  useEffect(() => {
+    localStorage.setItem(COLOR_MODE_KEY, colorMode);
+    updateRootColors(colorMode);
+  }, [colorMode]);
 
   return (
-    <ThemeContext.Provider value={contextValue}>
+    <ThemeContext.Provider value={{ colorMode, setColorMode }}>
       <StyledThemeProvider theme={{ colorMode }}>{children}</StyledThemeProvider>
     </ThemeContext.Provider>
   );

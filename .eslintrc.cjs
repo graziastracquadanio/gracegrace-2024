@@ -18,13 +18,14 @@ module.exports = {
   plugins: ['react-refresh', 'import'],
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
     // import config
     'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never', js: 'never' }],
     'import/prefer-default-export': 'off',
     'import/no-duplicates': 'error',
     'import/no-useless-path-segments': ['error', { noUselessIndex: true }],
     'import/no-cycle': [2, { maxDepth: 1 }],
-    'import/prefer-default-export': 'off',
     'import/order': [
       'error',
       {
