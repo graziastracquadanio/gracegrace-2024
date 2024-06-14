@@ -5,21 +5,26 @@ import { LoadingIndicator } from 'components/LoadingIndicator';
 import { Navigation } from 'components/Navigation';
 import { Notificator } from 'components/Notificator';
 import { BREAKPOINTS } from 'constants/css-variables';
+import { useThemeContext } from 'contexts/themeContext';
 
 export function AppContent() {
+  const { colorMode } = useThemeContext();
+
   return (
-    <>
-      <LoadingIndicator />
-      <MainContainer>
-        <ContentLimiterContainer>
-          <Notificator />
-          <Navigation />
-          <Suspense>
-            <AppRouter />
-          </Suspense>
-        </ContentLimiterContainer>
-      </MainContainer>
-    </>
+    colorMode && (
+      <>
+        <LoadingIndicator />
+        <MainContainer>
+          <ContentLimiterContainer>
+            <Notificator />
+            <Navigation />
+            <Suspense>
+              <AppRouter />
+            </Suspense>
+          </ContentLimiterContainer>
+        </MainContainer>
+      </>
+    )
   );
 }
 

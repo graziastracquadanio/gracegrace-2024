@@ -17,7 +17,7 @@ const updateRootColors = (newValue: ColorMode) => {
 };
 
 export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
-  const [colorMode, setColorMode] = useState<ColorMode>('light');
+  const [colorMode, setColorMode] = useState<ColorMode | null>(null);
 
   useEffect(() => {
     const mql = window.matchMedia('(prefers-color-scheme: dark)');
@@ -38,8 +38,10 @@ export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(COLOR_MODE_KEY, colorMode);
-    updateRootColors(colorMode);
+    if (colorMode) {
+      localStorage.setItem(COLOR_MODE_KEY, colorMode);
+      updateRootColors(colorMode);
+    }
   }, [colorMode]);
 
   return (

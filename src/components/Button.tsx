@@ -1,7 +1,4 @@
-import React from 'react';
-
-import styled, { css } from 'styled-components';
-
+import { styled, css } from 'styled-components';
 import { BREAKPOINTS } from 'constants/css-variables';
 import type { Palette } from 'types/colors';
 

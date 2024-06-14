@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 import { ColorMode } from 'types/colors';
 
 export interface ThemeProps {
-  colorMode: ColorMode;
+  colorMode: ColorMode | null;
   setColorMode: (newValue: ColorMode) => void;
 }
 
